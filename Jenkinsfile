@@ -24,7 +24,7 @@ pipeline {
       }
       post {
         success {
-          archiveArtifacts artifacts: "target\rest-service-*.jar", fingerprint: true, onlyIfSuccessful: true
+          archiveArtifacts artifacts: "target/rest-service-*.jar", fingerprint: true, onlyIfSuccessful: true
           sh "echo 'Artifact succesfully archived!'"
         }
       }
