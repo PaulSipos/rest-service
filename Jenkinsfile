@@ -18,6 +18,16 @@ pipeline {
         junit 'target/surefire-reports/*.xml'
       }
     }
-    
+    stage ('Building Package and archiving'){
+      steps {
+        sh 'mvn package'
+      }
+      post {
+        success {
+          archiveArtifacts artifacts: "target\rest-service-*.jar", fingerprint: "true", onlyIfSuccessful: "true"
+          sh "echo 'Artifact succesfully archived!'"
+        }
+      }
+    }
   }
 }
